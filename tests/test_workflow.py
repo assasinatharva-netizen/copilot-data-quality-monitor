@@ -20,12 +20,14 @@ def test_process_dataset_calculates_and_stores_quality_metrics(tmp_path) -> None
         "null_count": 1,
         "duplicate_count": 1,
         "null_percentage": 16.666666666666664,
+        "quality_status": "WARNING",
     }
     results = get_quality_results(database_path)
     assert len(results) == 1
     assert results[0]["dataset_name"] == "quality_data.csv"
     assert results[0]["row_count"] == metrics["row_count"]
     assert results[0]["null_count"] == metrics["null_count"]
+    assert results[0]["quality_status"] == "WARNING"
 
 
 def test_process_dataset_raises_for_empty_csv(tmp_path) -> None:

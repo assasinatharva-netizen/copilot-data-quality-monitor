@@ -1,2 +1,8 @@
 pandas
 pytest
+fastapi
+uvicorn
+python-multipart
+httpx2
+requests
+streamlit

@@ -1,6 +1,6 @@
 # Data Quality Monitor
 
-A small Python learning project for monitoring the quality of CSV data.
+A Python application for monitoring the quality of CSV data.
 
 The application will eventually calculate these metrics for a CSV file:
 
@@ -9,15 +9,15 @@ The application will eventually calculate these metrics for a CSV file:
 - Duplicate count
 - Null percentage
 
-This first step only establishes the project structure. It does not yet include
-CSV-processing logic, a web interface, a database, containers, or AI features.
+The application provides a FastAPI backend, a Streamlit dashboard, and SQLite
+persistence for processed CSV results.
 
 ## Project Structure
 
-- `app/`: Application package. Future CSV quality-monitoring code will live here.
-- `tests/`: Tests for the application code.
-- `requirements.txt`: Python dependencies for the project. It is intentionally
-	empty until the application needs a library.
+- `app/`: CSV processing, quality checks, workflows, persistence, and API code.
+- `dashboard.py`: Streamlit user interface that communicates with the API.
+- `tests/`: Automated tests for the application code.
+- `requirements.txt`: Python dependencies for the project.
 
 ## Getting Started
 
@@ -28,3 +28,20 @@ python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 pip install -r requirements.txt
 ```
+
+## Run the Application
+
+Start the FastAPI backend in one terminal:
+
+```powershell
+uvicorn app.api:app --reload
+```
+
+Start the Streamlit dashboard in another terminal:
+
+```powershell
+streamlit run dashboard.py
+```
+
+Open the dashboard at `http://localhost:8501`. The FastAPI interactive
+documentation is available at `http://127.0.0.1:8000/docs`.

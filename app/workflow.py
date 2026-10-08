@@ -10,12 +10,14 @@ from app.quality_checks import QualityMetrics, calculate_quality_metrics
 def process_dataset(
     file_path: str | Path,
     database_path: str | Path = DATABASE_PATH,
+    dataset_name: str | None = None,
 ) -> QualityMetrics:
     """Load a CSV dataset, calculate its metrics, and store the result.
 
     Args:
         file_path: Path to the CSV file to process.
         database_path: Path to the SQLite database that stores the result.
+        dataset_name: Name to store for the dataset. Defaults to the CSV filename.
 
     Returns:
         The calculated quality metrics for the dataset.
@@ -27,5 +29,5 @@ def process_dataset(
     path = Path(file_path)
     dataframe = load_csv(path)
     metrics = calculate_quality_metrics(dataframe)
-    insert_quality_result(path.name, metrics, database_path)
+    insert_quality_result(dataset_name or path.name, metrics, database_path)
     return metrics

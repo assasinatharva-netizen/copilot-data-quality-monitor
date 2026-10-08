@@ -16,4 +16,5 @@ def test_analyze_csv_loads_data_and_calculates_quality_metrics(tmp_path) -> None
         "null_count": 1,
         "duplicate_count": 1,
         "null_percentage": 16.666666666666664,
+        "quality_status": "WARNING",
     }
